@@ -66,7 +66,7 @@ data "aws_iam_policy_document" "github_readonly" {
       "s3:GetObject",
       "s3:ListBucket"
     ]
-    resources = ["${local.terraform_state_bucket_arn}/${data.aws_caller_identity.current.account_id}/*"]
+    resources = ["*"]
   }
   statement {
     sid = "AllowDynamoDBActions"
