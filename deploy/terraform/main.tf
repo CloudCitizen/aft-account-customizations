@@ -11,7 +11,7 @@ module "github_readonly" {
 
   provider_url = "token.actions.githubusercontent.com"
 
-  role_policy_arns              = [data.aws_iam_policy_document.github_readonly.arn, "arn:aws:iam::aws:policy/ReadOnlyAccess"]
+  role_policy_arns              = [aws_iam_policy.github_readonly.arn, "arn:aws:iam::aws:policy/ReadOnlyAccess"]
   number_of_role_policy_arns    = 2
   oidc_fully_qualified_subjects = ["repo:CloudCitizen/polaris-iam:pull_request"]
 
@@ -78,4 +78,10 @@ data "aws_iam_policy_document" "github_readonly" {
     ]
     resources = ["*"]
   }
+}
+
+resource "aws_iam_policy" "github_readonly" {
+  name        = "github_terraform_readonly"
+  description = "Permissions to access state bucket and dynamodb table"
+  policy      = data.aws_iam_policy_document.github_readonly.json
 }
