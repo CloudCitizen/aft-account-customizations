@@ -27,7 +27,7 @@ module "github_readwrite" {
 
   create_role = true
 
-  role_name = "github_readonly"
+  role_name = "github_readwrite"
 
   provider_url = "token.actions.githubusercontent.com"
 
