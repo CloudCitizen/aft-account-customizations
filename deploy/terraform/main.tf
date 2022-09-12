@@ -32,7 +32,7 @@ module "github_readwrite" {
   provider_url = "token.actions.githubusercontent.com"
 
   role_policy_arns              = ["arn:aws:iam::aws:policy/AdministratorAccess"]
-  number_of_role_policy_arns    = 2
+  number_of_role_policy_arns    = 1
   oidc_fully_qualified_subjects = ["repo:CloudCitizen/polaris-iam:ref:refs/heads/main"]
 
   tags = {
